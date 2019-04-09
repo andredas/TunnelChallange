@@ -53,8 +53,7 @@
 	"type"		:	"lights",
 	"data"		: 
 					{
-						"number" : (0 t/m 4)
-						"sensitivity" : (0 – 255)
+						"status" : (0/1/2) (0 = alles uit, 1 = normaal, 2 = alles 100%)
 					}
 }
 ```
