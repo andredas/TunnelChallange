@@ -45,7 +45,7 @@
 ```json
 {
 	"type"		:	"trafficlight",
-	"state"		: 	0/1/2							 		(0 = groen , 1 = oranje,2 = rood)
+	"state"		: 	0/1/2/3/4							 		(0 = groen , 1 = geel ,2 = geel knipperen 3= rood, 4=gedoofd)
 }
 ```
 ```json
