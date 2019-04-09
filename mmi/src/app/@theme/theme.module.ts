@@ -56,10 +56,7 @@ import {
   EvaIconsPipe,
 } from './pipes';
 import {
-  OneColumnLayoutComponent,
   SampleLayoutComponent,
-  ThreeColumnsLayoutComponent,
-  TwoColumnsLayoutComponent,
 } from './layouts';
 
 const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule];
@@ -105,10 +102,7 @@ const COMPONENTS = [
   HeaderComponent,
   FooterComponent,
   TinyMCEComponent,
-  OneColumnLayoutComponent,
   SampleLayoutComponent,
-  ThreeColumnsLayoutComponent,
-  TwoColumnsLayoutComponent,
   ToggleSettingsButtonComponent,
 ];
 
