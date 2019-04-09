@@ -18,6 +18,7 @@ export class DashboardComponent implements OnDestroy {
 
   private alive = true;
 
+
   solarValue: number;
   lightCard: CardSettings = {
     title: 'Light',

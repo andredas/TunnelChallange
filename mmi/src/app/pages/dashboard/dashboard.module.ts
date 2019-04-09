@@ -20,6 +20,11 @@ import { SolarComponent } from './solar/solar.component';
 import { PlayerComponent } from './rooms/player/player.component';
 import { TrafficComponent } from './traffic/traffic.component';
 import { TrafficChartComponent } from './traffic/traffic-chart.component';
+import { ControlPanelComponent } from './control-panel/control-panel.component';
+import { DetailOverviewComponent } from './detail-overview/detail-overview.component';
+import { MapOverviewComponent } from './map-overview/map-overview.component';
+import { NotificationCenterComponent } from './notification-center/notification-center.component';
+import { SystemOverviewComponent } from './system-overview/system-overview.component';
 
 @NgModule({
   imports: [
@@ -44,6 +49,11 @@ import { TrafficChartComponent } from './traffic/traffic-chart.component';
     SolarComponent,
     TrafficComponent,
     TrafficChartComponent,
+    SystemOverviewComponent,
+    NotificationCenterComponent,
+    MapOverviewComponent,
+    DetailOverviewComponent,
+    ControlPanelComponent,
   ],
 })
 export class DashboardModule { }
