@@ -51,10 +51,7 @@
 ```json
 {
 	"type"		:	"lights",
-	"data"		: 
-					{
-						"status" : (0/1/2) (0 = alles uit, 1 = normaal, 2 = alles 100%)
-					}
+	"status" 	: 	0/1/2 										(0 = alles uit, 1 = normaal, 2 = alles 100%)
 }
 ```
 ```json
