@@ -1,0 +1,42 @@
+<nb-card style="height:400px;"[size]="breakpoint.width >= breakpoints.xxxl || breakpoint.width < breakpoints.md ? 'large' : 'xlarge'">
+  <nb-tabset fullWidth>
+    <nb-tab tabTitle="Slagboom">
+      <div>
+        <table>
+          <tr><td></td><td></td></tr>
+          <tr><th>Name</th><th>Status</th></tr>
+          <tr *ngFor="let slagboom of slagboomen"><td>{{slagboom.naam}}</td><td id="slagboomZuid" class="inactive"></td></tr>
+        </table>
+      </div>
+    </nb-tab>
+    <nb-tab tabTitle="SOS">
+      <div>
+        <table>
+          <tr><th>Name</th><th>Status</th></tr>
+          <tr><td></td><td></td></tr>
+          <tr><td>SOS 1</td><td id="sos1" class="inactive"></td></tr>
+          <tr><td></td><td></td></tr>                         <!-- border-spacing deed het niet -->
+          <tr><td>SOS 2</td><td id="sos2" class="inactive"></td></tr>
+          <tr><td></td><td></td></tr>
+          <tr><td>SOS 3</td><td id="sos3" class="inactive"></td></tr>
+          <tr><td></td><td></td></tr>
+          <tr><td>SOS 4</td><td id="sos4" class="inactive"></td></tr>
+        </table>
+      </div>
+    </nb-tab>
+    <nb-tab tabTitle="CCTV">
+      <div>
+        <img id="stream" src="http://169.254.158.86/mjpg/video.mjpg?timestamp=1554829503588" alt="Press Reload if no image is displayed" style="cursor: crosshair;" width="150" height="150" border="1px solid black" margin="0 auto">
+      </div>
+    </nb-tab>
+    <nb-tab tabTitle="Stoplicht">
+      <div>
+        <table>
+          <tr><td></td><td></td></tr>
+          <tr><th>Name</th><th>Status</th></tr>
+          <tr><td>Zuid</td><td id="stoplichtZuid"class="stop_red"></td></tr>
+        </table>
+      </div>
+    </nb-tab>
+  </nb-tabset>
+</nb-card>
