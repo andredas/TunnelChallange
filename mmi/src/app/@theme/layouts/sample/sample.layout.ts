@@ -47,14 +47,8 @@ import { StateService } from '../../../@core/utils';
         <ngx-footer></ngx-footer>
       </nb-layout-footer>
 
-      <nb-sidebar class="settings-sidebar"
-                   tag="settings-sidebar"
-                   state="collapsed"
-                   fixed
-                   [end]="sidebar.id !== 'end'">
-      </nb-sidebar>
+      
     </nb-layout>
-    <ngx-toggle-settings-button></ngx-toggle-settings-button>
   `,
 })
 export class SampleLayoutComponent implements OnDestroy {

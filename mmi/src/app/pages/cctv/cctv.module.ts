@@ -4,6 +4,11 @@ import { NgxEchartsModule } from 'ngx-echarts';
 
 import { ThemeModule } from '../../@theme/theme.module';
 
+import { CctvComponent } from './cctv.component';
+
+const COMPONENTS = [
+  CctvComponent
+];
 
 @NgModule({
   imports: [
@@ -11,7 +16,7 @@ import { ThemeModule } from '../../@theme/theme.module';
     NgxEchartsModule,
   ],
   declarations: [
-
+      ...COMPONENTS
   ],
 })
 export class CctvModule { }

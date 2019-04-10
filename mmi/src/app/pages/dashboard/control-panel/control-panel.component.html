@@ -1,3 +1,13 @@
-<p>
-  control-panel works!
-</p>
+<div class="header">Control panel</div>
+  <div class="row" *ngFor="let statusCard of statusCards">
+  <div class="col-xxxl-3 col-md-8">
+  <br>
+    <ngx-status-card [title]="statusCard.title"
+                     [type]="statusCard.type"
+					 [on]="statusCard.on"
+					 (click)="onClick(statusCard.title, statusCard.on)"
+					 >
+      <i [ngClass]="statusCard.iconClass"></i>
+    </ngx-status-card>
+  </div>
+</div>

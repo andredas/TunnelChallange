@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CctvComponent } from './cctv/cctv.component';
 
 
 const routes: Routes = [{
@@ -16,6 +17,7 @@ const routes: Routes = [{
     loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
   }, {
     path: 'cctv',
+    component: CctvComponent,
   }, {
     path: 'modal-overlays',
     loadChildren: './modal-overlays/modal-overlays.module#ModalOverlaysModule',
@@ -35,10 +37,12 @@ const routes: Routes = [{
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
-  }, {
-    path: '**',
-    component: DashboardComponent,
-  }],
+  }
+  // , {
+  //   path: '**',
+  //   component: DashboardComponent,
+  // }
+],
 }];
 
 @NgModule({
