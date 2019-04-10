@@ -11,7 +11,7 @@ def save_data(lamp, type, info):
         return 0
 
 
-    if(lamp != "bri" and lamp != "on"):
+    if(type != "bri" and lamp != "on"):
         return 0
 
     db = myclient["mydatabase"]
