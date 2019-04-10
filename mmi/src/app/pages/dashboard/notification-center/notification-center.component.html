@@ -1,10 +1,7 @@
-
 <table>
    <tr><td></td><td></td></tr>
-   <tr><th>Type</th><th>State</th><th>Cause</th><th>Amount</th></tr>
-   <tr *ngFor="let slagboom of slagbomen"><td>{{slagboom.type}}</td><td>{{slagboom.state}}</td></tr>
-   <tr *ngFor="let x of sos "><td>{{x.type}}</td><td>{{x.state}}</td><td>{{x.date[0].cause}}</td><td>{{x.date[0].amount}}</td></tr>
-   <tr *ngFor="let x of cctv "><td>{{x.type}}</td><td>{{x.state}}</td></tr>
-   <tr *ngFor="let x of trafficlight "><td>{{x.type}}</td><td>{{x.state}}</td></tr>
-   <tr *ngFor="let x of lights "><td>{{x.type}}</td><td>{{x.state}}</td></tr>
+   <tr><th>Type</th><th>Message</th><th>Device</th><th>Timestamp</th></tr>
+   <tr *ngFor="let x of info "><td class="info"> {{x.type}}</td><td>{{x.message}}</td><td>{{x.device}}</td><td>{{x.timestamp}}</td></tr>
+   <tr *ngFor="let x of warning "><td class="warning"> {{x.type}}</td><td>{{x.message}}</td><td>{{x.device}}</td><td>{{x.timestamp}}</td></tr>
+   <tr *ngFor="let x of error "><td class="error"> {{x.type}}</td><td>{{x.message}}</td><td>{{x.device}}</td><td>{{x.timestamp}}</td></tr>
 </table>
