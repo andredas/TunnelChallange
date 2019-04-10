@@ -56,4 +56,4 @@ import { DetailOverviewComponent } from './detail-overview/detail-overview.compo
     DetailOverviewComponent,
   ],
 })
-export class DashboardModule { }
+export class CctvModule { }

@@ -9,15 +9,14 @@ import { NotFoundComponent } from './miscellaneous/not-found/not-found.component
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
-  children: [{
+  children: [ {
     path: 'dashboard',
-    component: ECommerceComponent,
-  }, {
-    path: 'iot-dashboard',
     component: DashboardComponent,
   }, {
     path: 'ui-features',
     loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
+  }, {
+    path: 'cctv',
   }, {
     path: 'modal-overlays',
     loadChildren: './modal-overlays/modal-overlays.module#ModalOverlaysModule',

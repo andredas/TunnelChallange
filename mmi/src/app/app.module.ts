@@ -14,14 +14,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SystemOverviewComponent } from './pages/dashboard/system-overview/system-overview.component';
-import { ControlPanelComponent } from './pages/dashboard/control-panel/control-panel.component';
-import { MapOverviewComponent } from './pages/dashboard/map-overview/map-overview.component';
-import { NotificationCenterComponent } from './pages/dashboard/notification-center/notification-center.component';
-import { DetailOverviewComponent } from './pages/dashboard/detail-overview/detail-overview.component';
 
 @NgModule({
-  declarations: [AppComponent, SystemOverviewComponent, ControlPanelComponent, MapOverviewComponent, NotificationCenterComponent, DetailOverviewComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
