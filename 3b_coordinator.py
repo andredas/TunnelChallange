@@ -19,24 +19,24 @@ def MMI_handler():
             data = {
                 'action': 'open_tunnel'
             }
-            #r = requests.post(url = 'http://127.0.0.1:5000/3b_handler_outside', json = data)
+            r = requests.post(url = 'http://127.0.0.1:5002/3b_handler_outside', json = data)
         elif command['action'] == 1:
             data = {
                 'action': 'warning'
             }
-           # r = requests.post(url='http://127.0.0.1:5000/3b_handler_outside', json=data)
+            r = requests.post(url='http://127.0.0.1:5002/3b_handler_outside', json=data)
             r = requests.post(url='http://127.0.0.1:5001/3b_handler_inside', json=data)
             return r.text
         elif command['action'] == 2:
             data = {
                 'action': 'close_tunnel'
             }
-            #r = requests.post(url='http://127.0.0.1:5000/3b_handler_outside', json=data)
+            r = requests.post(url='http://127.0.0.1:5002/3b_handler_outside', json=data)
         elif command['action'] == 3:
             data = {
                 'action': 'warning_over'
             }
-            #r = requests.post(url='http://127.0.0.1:5000/3b_handler_outside', json=data)
+            r = requests.post(url='http://127.0.0.1:5002/3b_handler_outside', json=data)
             r = requests.post(url='http://127.0.0.1:5001/3b_handler_inside', json=data)
             return r.text
     elif command['type'] == "cctv":

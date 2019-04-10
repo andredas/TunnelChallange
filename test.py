@@ -12,7 +12,7 @@ print(a + b)
   
 # data to be sent to api 
 data = {'type':"tunnel",
-        'action':1}
+        'action':3}
   
 # sending post request and saving response as response object 
 r = requests.post(url='http://127.0.0.1:5000/t', json=data)
