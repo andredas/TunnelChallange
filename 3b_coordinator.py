@@ -13,12 +13,28 @@ def MMI_handler():
 
     if command['type'] == "tunnel" :
         if command['action'] == 0 :
-            r = requests.post(url = 'http://127.0.0.1:5000/', json = data)
-        elif command['action'] == 1 :
-            #do something
-        elif command['action'] == 0:
-         #do something
-     elif command['type'] == "tunnel":
+            data = {
+                'action': 'open_tunnel'
+            }
+            r = requests.post(url = 'http://127.0.0.1:5000/3b_handler_outside', json = data)
+        elif command['action'] == 1:
+            data = {
+                'action': 'warning'
+            }
+            r = requests.post(url='http://127.0.0.1:5000/3b_handler_outside', json=data)
+            r = requests.post(url='http://127.0.0.1:5000/3b_handler_inside', json=data)
+        elif command['action'] == 2:
+            data = {
+                'action': 'close_tunnel'
+            }
+            r = requests.post(url='http://127.0.0.1:5000/3b_handler_outside', json=data)
+        elif command['action'] == 3:
+            data = {
+                'action': 'warning_over'
+            }
+            r = requests.post(url='http://127.0.0.1:5000/3b_handler_outside', json=data)
+            r = requests.post(url='http://127.0.0.1:5000/3b_handler_inside', json=data)
+    elif command['type'] == "tunnel":
         if command['action'] == 0 :
             #do something
         elif command['action'] == 1 :
