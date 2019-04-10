@@ -34,23 +34,6 @@ def MMI_handler():
             }
             r = requests.post(url='http://127.0.0.1:5000/3b_handler_outside', json=data)
             r = requests.post(url='http://127.0.0.1:5000/3b_handler_inside', json=data)
-    elif command['type'] == "tunnel":
-        if command['action'] == 0 :
-            #do something
-        elif command['action'] == 1 :
-            #do something
-
-@app.route('/postjson', methods = ['POST'])
-#def printMsg():
-    #app.logger.warning('testing warning log')
-#    app.logger.error('testing error log')
-#    app.logger.info('testing info log')
-#    return "Check your console"
-def postJsonHandler():
-    #print(request.is_json)
-    content = request.get_json()
-    #print(content)
-    #app.logger.info('test')
-    # #print('This is error output', file=sys.stderr)
-    app.logger.error(content['name'])
-    return 'JSON posted'
+    elif command['type'] == "cctv":
+        data = {'action' : command['action']}
+        r = requests.post(url='http://127.0.0.1:5000/3b_handler_inside', json=data)
