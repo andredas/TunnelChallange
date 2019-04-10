@@ -2,7 +2,7 @@ from flask import Flask
 from flask import request
 import logging
 import time
-#from __future__ import print_function # In python 2.7
+import requests
 import sys
 app = Flask(__name__)
 
