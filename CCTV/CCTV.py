@@ -86,6 +86,14 @@ def definieerpreset(k, p, t, z):
 definieerpreset(0, 90, -20, 0)
 definieerpreset(1, -80, -10, 0)
 
+@app.route('/zoom/<s>')
+def zoom(s):
+    k = int(s)
+    zoom = k
+    payload = {'camera': '1', 'zoom': zoom, 'imagerotation': '0'}
+    r = requests.get(url, params=payload)
+    return "ingezoomd"
+
 
 @app.route('/settopreset/<s>')
 def settopreset(s):
@@ -100,9 +108,22 @@ def settopreset(s):
 
 @app.route('/sethome')
 def sethome():
-    r = requests.get(
-        'http://root:root@192.168.3.40/axis-cgi/com/ptz.cgi?camera=1&gotoserverpresetname=Home&timestamp=1554816422687')
-
+    try:
+        r = requests.get(
+            'http://root:root@192.168.3.40/axis-cgi/com/ptz.cgi?camera=1&gotoserverpresetname=Home&timestamp=1554816422687')
+        post_data = {
+            'timestamp': ts,
+            'state': 'INFO',
+            'message': 'De positie is teruggezet naar home'
+        }
+    except:
+        posts = db.posts
+        post_data = {
+            'timestamp': ts,
+            'state': 'ERROR',
+            'message': 'de home positie kon niet worden teruggezet'
+        }
+    result = posts.insert_one(post_data)
     return "sethome"
 
 
