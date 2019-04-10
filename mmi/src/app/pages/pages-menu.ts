@@ -7,4 +7,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/dashboard',
     home: true,
   },
+  {
+    title: 'CCTV',
+    icon: 'nb-home',
+    link: '/pages/cctv',
+    home: true,
+  },
 ];

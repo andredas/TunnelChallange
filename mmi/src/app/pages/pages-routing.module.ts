@@ -15,6 +15,8 @@ const routes: Routes = [{
     path: 'ui-features',
     loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
   }, {
+    path: 'cctv',
+  }, {
     path: 'modal-overlays',
     loadChildren: './modal-overlays/modal-overlays.module#ModalOverlaysModule',
   }, {
