@@ -1,1 +1,25 @@
 
+td, th{
+    width:150px;
+}
+tr {
+
+}
+table{
+  width:300px;
+  margin:0 auto;
+  color:black;
+}
+
+.info{
+  border-left: solid grey 2px;
+  height:15px;
+}
+.error {
+  border-left: solid red 2px;
+  height:15px;
+}
+.warning {
+  border-left: solid #FFB94E 2px;
+  heitgh:15px;
+}
