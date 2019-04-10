@@ -1,14 +1,29 @@
 import cv2
+from pymongo import MongoClient
 import requests
+from flask import Flask
+import time
+import datetime
+
+ts = time.time()
+
+st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+
 import keyboard  # using module keyboard
 
-url = 'http://root:root@169.254.158.86/axis-cgi/com/ptz.cgi'
+client = MongoClient('mongodb://localhost:27017')
+db = client['pymongo_test']
+
+app = Flask(__name__)
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=5003)
+
+url = 'http://root:root@192.168.3.40/axis-cgi/com/ptz.cgi'
 presets = list()
 pan = int()
 tilt = int()
 zoom = int()
-
-# cap = cv2.VideoCapture('rtsp://root:root@169.254.158.86/axis-media/media.amp')
 
 
 def setpan(a):
@@ -66,61 +81,79 @@ def definieerpreset(k, p, t, z):
     createlist(k)
     # if isinstance(presets[k], dict):
     presets[k] = {"pan": p, "tilt": t, "zoom": z}
-    print("hoi")
 
 
+definieerpreset(0, 90, -20, 0)
+definieerpreset(1, -80, -10, 0)
 
-def settopreset(k):
+
+@app.route('/settopreset/<s>')
+def settopreset(s):
+    k = int(s)
     pan = presets[k].get("pan")
     tilt = presets[k].get("tilt")
     zoom = presets[k].get("zoom")
     payload = {'camera': '1', 'pan': pan, 'tilt': tilt, 'zoom': zoom, 'imagerotation': '0'}
     r = requests.get(url, params=payload)
+    return "done"
 
 
+@app.route('/sethome')
 def sethome():
-    r = requests.get('http://root:root@169.254.158.86/axis-cgi/com/ptz.cgi?camera=1&gotoserverpresetname=Home&timestamp=1554816422687')
+    r = requests.get(
+        'http://root:root@192.168.3.40/axis-cgi/com/ptz.cgi?camera=1&gotoserverpresetname=Home&timestamp=1554816422687')
+
+    return "sethome"
 
 
+@app.route('/setidentificatiecode/<code>')
 def setidentificatiecode(code):
-    r = requests.get('http://root:root@169.254.158.86/axis-cgi/operator/param_authenticate.cgi?action=update&Image.I0.Text.String='+code)
+    posts = db.posts
+    try:
+        r = requests.get(
+            'http://root:root@192.168.3.40/axis-cgi/operator/param_authenticate.cgi?action=update&Image.I0.Text.String=' + code)
+
+        post_data = {
+            'timestamp': ts,
+            'state': 'INFO',
+            'message': 'De identificatiecode is op '+code+' gezet'
+        }
+
+    except:
+        posts = db.posts
+        post_data = {
+            'timestamp': ts,
+            'state': 'ERROR',
+            'message': 'De identificatiecode kan niet worden veranderd'
+        }
+    result = posts.insert_one(post_data)
+    return "identificatiecode is veranderd naar "+code
+# print('One post: {0}'.format(result.inserted_id))
+# cap = cv2.VideoCapture('rtsp://root:root@192.168.3.40/axis-media/media.amp')
 
 
-setidentificatiecode("CCTV1")
-definieerpreset(0, -150, 0, 5000)
-print(presets)
-definieerpreset(1, 150, -45, 0)
-print(presets)
-definieerpreset(2, -150, 0, 5000)
-print(presets)
-definieerpreset(3, 150, -45, 0)
-print(presets)
-definieerpreset(13, 150, -45, 0)
-print(presets)
-
-0
 # cap.release()
 # cv2.destroyAllWindows()
 
 # payload = {'camera': '1', 'pan': pan, 'tilt': tilt, 'zoom': zoom, 'imagerotation': '0'}
 # r = requests.get(url, params=payload)
 # if keyboard.is_pressed('a'):  # if key 'q' is pressed
-#     r = requests.get('http://root:root@169.254.158.86/axis-cgi/com/ptz.cgi?camera=1&continuouspantiltmove=-100,0&imagerotation=0')
+#     r = requests.get('http://root:root@192.168.3.40/axis-cgi/com/ptz.cgi?camera=1&continuouspantiltmove=-100,0&imagerotation=0')
 # elif keyboard.is_pressed('d'):  # if key 'q' is pressed
-#     r = requests.get('http://root:root@169.254.158.86/axis-cgi/com/ptz.cgi?camera=1&continuouspantiltmove=100,0&imagerotation=0')
+#     r = requests.get('http://root:root@192.168.3.40/axis-cgi/com/ptz.cgi?camera=1&continuouspantiltmove=100,0&imagerotation=0')
 # elif keyboard.is_pressed('w') :
-#     r = requests.get('http://root:root@169.254.158.86/axis-cgi/com/ptz.cgi?camera=1&continuouspantiltmove=0,100&imagerotation=0')
+#     r = requests.get('http://root:root@192.168.3.40/axis-cgi/com/ptz.cgi?camera=1&continuouspantiltmove=0,100&imagerotation=0')
 # elif keyboard.is_pressed('s'):
-#     r = requests.get('http://root:root@169.254.158.86/axis-cgi/com/ptz.cgi?camera=1&continuouspantiltmove=0,-100&imagerotation=0')
+#     r = requests.get('http://root:root@192.168.3.40/axis-cgi/com/ptz.cgi?camera=1&continuouspantiltmove=0,-100&imagerotation=0')
 # elif keyboard.is_pressed('z'):
-#     r = requests.get('http://root:root@169.254.158.86/axis-cgi/com/ptz.cgi?camera=1&continuouszoommove=100&imagerotation=0')
+#     r = requests.get('http://root:root@192.168.3.40/axis-cgi/com/ptz.cgi?camera=1&continuouszoommove=100&imagerotation=0')
 # elif keyboard.is_pressed('x'):
-#     r = requests.get('http://root:root@169.254.158.86/axis-cgi/com/ptz.cgi?camera=1&continuouszoommove=-100&imagerotation=0')
+#     r = requests.get('http://root:root@192.168.3.40/axis-cgi/com/ptz.cgi?camera=1&continuouszoommove=-100&imagerotation=0')
 # elif keyboard.is_pressed('q'):
 #     break
 # else:
-#     r = requests.get('http://root:root@169.254.158.86/axis-cgi/com/ptz.cgi?camera=1&continuouspantiltmove=0,0&imagerotation=0')
-#     r = requests.get('http://root:root@169.254.158.86/axis-cgi/com/ptz.cgi?camera=1&continuouzoommove=0&imagerotation=0')
+#     r = requests.get('http://root:root@192.168.3.40/axis-cgi/com/ptz.cgi?camera=1&continuouspantiltmove=0,0&imagerotation=0')
+#     r = requests.get('http://root:root@192.168.3.40/axis-cgi/com/ptz.cgi?camera=1&continuouzoommove=0&imagerotation=0')
 #
 
 # ret, frame = cap.read()
