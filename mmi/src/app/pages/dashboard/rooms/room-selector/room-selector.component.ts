@@ -67,6 +67,9 @@ export class RoomSelectorComponent {
     ],
   };
 
+  lightActive = false;
+  slagboomActive = false;
+
   constructor() {
     this.selectRoom('2');
   }
@@ -87,5 +90,6 @@ export class RoomSelectorComponent {
     this.select.emit(roomNumber);
     this.selectedRoom = roomNumber;
     this.sortRooms();
+    console.log(roomNumber);
   }
 }

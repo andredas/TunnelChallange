@@ -6,7 +6,10 @@
   svg {
     width: 100%;
   }
+  .active{
+    fill: red;
 
+  }
   .stroke-pattern {
     fill: none;
     stroke: #bdc4cd;
