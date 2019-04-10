@@ -28,7 +28,7 @@ pan = int()
 tilt = int()
 zoom = int()
 
-
+app = Flask(__name__)
 def setpan(a):
     if a < -180:
         a = -180
