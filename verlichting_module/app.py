@@ -7,9 +7,12 @@ app = Flask(__name__)
 @app.route('/database/<lamp>/<type>/<info>')
 def save_data(lamp, type, info):
 
-    if type
+    if(lamp != 2 and lamp != 8 and lamp != 15 and lamp != 13 and lamp != 4):
+        return 0
 
-    #info check
+
+    if(lamp != "bri" and lamp != "on"):
+        return 0
 
     db = myclient["mydatabase"]
     mycol = db["lighting_log"]
@@ -26,9 +29,11 @@ def save_data(lamp, type, info):
 @app.route('/get/<lamp>/<type>/')
 def get_data(lamp, typeI):
 
-# lamp check
+    if (lamp != 2 and lamp != 8 and lamp != 15 and lamp != 13 and lamp != 4):
+        return 0
 
-# type check
+    if(lamp != "bri" and lamp != "on"):
+        return 0
 
     scriptVerlichting.get_info(lamp, typeI)
 
