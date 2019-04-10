@@ -1,11 +1,40 @@
 from flask import Flask
-from flask import jsonify
-
+from flask import request
+import logging
+#from __future__ import print_function # In python 2.7
+import sys
 app = Flask(__name__)
 
-@app.route("/", methods=['POST'])
-def hello():
-    return jsonify({
-	    "type"		:	"cctv",
-	    "state"		: 	1
-    })
+
+@app.route('/3B', methods = ['POST'])
+def MMI_handler():
+    #get message
+    command = request.get_json()
+
+    if command['type'] == "tunnel" :
+        if command['action'] == 0 :
+            r = requests.post(url = 'http://127.0.0.1:5000/', json = data)
+        elif command['action'] == 1 :
+            #do something
+        elif command['action'] == 0:
+         #do something
+     elif command['type'] == "tunnel":
+        if command['action'] == 0 :
+            #do something
+        elif command['action'] == 1 :
+            #do something
+
+@app.route('/postjson', methods = ['POST'])
+#def printMsg():
+    #app.logger.warning('testing warning log')
+#    app.logger.error('testing error log')
+#    app.logger.info('testing info log')
+#    return "Check your console"
+def postJsonHandler():
+    #print(request.is_json)
+    content = request.get_json()
+    #print(content)
+    #app.logger.info('test')
+    # #print('This is error output', file=sys.stderr)
+    app.logger.error(content['name'])
+    return 'JSON posted'
