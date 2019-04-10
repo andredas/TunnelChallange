@@ -4,6 +4,10 @@ import requests
 from flask import Flask
 import time
 import datetime
+from flask import request
+import logging
+import time
+import sys
 
 ts = time.time()
 
@@ -16,8 +20,7 @@ db = client['pymongo_test']
 
 app = Flask(__name__)
 
-if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5003)
+
 
 url = 'http://root:root@192.168.3.40/axis-cgi/com/ptz.cgi'
 presets = list()
@@ -149,6 +152,20 @@ def setidentificatiecode(code):
         }
     result = posts.insert_one(post_data)
     return "identificatiecode is veranderd naar "+code
+
+@app.route('/cctv', methods = ['POST'])
+def action():
+    command = request.get_json()
+
+    k = int(command['action'])
+    pan = presets[k].get("pan")
+    tilt = presets[k].get("tilt")
+    zoom = presets[k].get("zoom")
+    payload = {'camera': '1', 'pan': pan, 'tilt': tilt, 'zoom': zoom, 'imagerotation': '0'}
+    r = requests.get(url, params=payload)
+    return "done"
+    command = request.get_json()
+
 # print('One post: {0}'.format(result.inserted_id))
 # cap = cv2.VideoCapture('rtsp://root:root@192.168.3.40/axis-media/media.amp')
 
