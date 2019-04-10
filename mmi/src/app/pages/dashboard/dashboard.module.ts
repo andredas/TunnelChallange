@@ -12,6 +12,7 @@ import { SystemOverviewComponent } from './system-overview/system-overview.compo
 import { MapOverviewComponent } from './map-overview/map-overview.component';
 import { NotificationCenterComponent } from './notification-center/notification-center.component';
 import { ControlPanelComponent } from './control-panel/control-panel.component';
+import { ContactsComponent } from './contacts/contacts.component';
 import { StatusCardComponent } from './status-card/status-card.component';
 
 @NgModule({
@@ -30,6 +31,7 @@ import { StatusCardComponent } from './status-card/status-card.component';
     ControlPanelComponent,
     NotificationCenterComponent,
 	StatusCardComponent,
+    ContactsComponent,
   ],
 })
 export class DashboardModule { }
