@@ -1,3 +1,12 @@
-<p>
-  control-panel works!
-</p>
+  <div class="row">
+  <div class="col-xxxl-3 col-md-8" *ngFor="let statusCard of statusCards">
+  <br>
+    <ngx-status-card [title]="statusCard.title"
+                     [type]="statusCard.type"
+					 [on]="statusCard.on"
+					 (click)="onClick(statusCard.title, statusCard.on)"
+					 >
+      <i [ngClass]="statusCard.iconClass"></i>
+    </ngx-status-card>
+  </div>
+</div>
