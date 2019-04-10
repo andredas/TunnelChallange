@@ -1,5 +1,17 @@
 from phue import Bridge
-#
+from flask import Flask
+from flask import request
+import logging
+import requests
+import json
+#from __future__ import print_function # In python 2.7
+import sys
+
+app = Flask(__name__)
+
+
+
+
 b = Bridge('192.168.0.45')
 b.connect()
 b.get_api()
@@ -47,3 +59,8 @@ def set_status(status):
 
         else:
             return 0
+
+@app.route('/verlichting', methods = ['POST'])
+def action():
+    command = request.get_json()
+    set_status(command['status'])
